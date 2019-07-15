@@ -99,6 +99,18 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ANSWER 2
 ## computes invese pf matrix returned by makeCacheMatrix
+cacheSolve<- function(x, ...){
+	inv<-x$getinv()
+	if(!is.null(inv))
+           {
+             print("retrieving Cached values")
+               return(inv)
+             }
+          data<-x$get()
+           inv<- solve(data,...)
+           x$setinv(inv)
+           inv
+}
 
 
 Computing the inverse of a square matrix can be done with the `solve`
